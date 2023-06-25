@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #151515;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+      max-width: 300px;
+      padding: 20px;
+      background-color: #0A0A0A;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #FBFCD4;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #FBFCD4;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    .form-group input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #000;
+      color: #d6c98e;
+      border: none;
+      cursor: pointer;
+    }
+
+    p {
+      color: #FBFCD4;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Login">
+      </div>
+    </form>
+
+    <a href="/register"><p>Sign Up</p></a>
+  </div>
+
+  <script type="text/javascript">
+    
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.ok) {
+        // Successful login
+        // Redirect or perform other actions
+        console.log("SUCCESSFUL LOGIN")
+        location.href = "/";
+
+      } else {
+        // Failed login
+        const errorData = await response.json();
+        const errorMessage = errorData.message;
+        // Display error message to the user
+
+        console.log("ERROR")
+        console.log(errorData)
+        console.log(errorMessage)
+      }
+    });
+
+  </script>
+</body>
+</html>

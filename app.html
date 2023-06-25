@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chat App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" type="text/css">
+
+
+</head>
+<body>
+
+  <div id="header">
+    <div id="menu-icon"><i class="fas fa-bars"></i></div>
+    <div class="title">Schizi</div>
+    <div class="new-chat-icon"><i class="fas fa-plus"></i></div>
+  </div>
+
+  <div class="view">
+    <div class="chat-container">
+      <div class="message-list">
+        
+
+        <div class="thought-bubble-post">
+          <div class="post-header">
+            <span class="user-name">johndoe</span>
+            <span class="speaker-icon"><i class="fas fa-volume-up"></i></span>
+            <span class="train-icon"><i class="fas fa-volume-up"></i></span>
+          </div>
+
+          <div class="post-date">2023-05-31T09:05:24.000Z</div>
+          <div class="post-square">
+            <div class="post-text">again first message</div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="image-preview-container">
+        <img class="image-preview" src="" style="display: none;">
+      </div>
+      <div class="input-container">
+        <div class="icon-container">
+          <label for="image-input" class="camera-icon">
+            <input type="file" class="image-input" accept="image/*" style="display: none;">
+            <span class="camera-icon"><i class="fas fa-camera"></i></span>
+          </label>
+          <span class="microphone-icon"><i class="fas fa-microphone"></i></span>
+        </div>
+        <textarea type="text" class="message-input" placeholder="Type your message..."></textarea>
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden view">
+    <div class="chat-list"></div>
+  </div>
+
+  <div class="hidden view">
+    <div class="chat-container">
+      <div class="message-list"></div>
+      <div class="image-preview-container">
+        <img class="image-preview" src="" style="display: none;">
+      </div>
+      <div class="input-container">
+        <div class="icon-container">
+          <label for="image-input" class="camera-icon">
+            <input type="file" class="image-input" accept="image/*" style="display: none;">
+            <span class="camera-icon"><i class="fas fa-camera"></i></span>
+          </label>
+          <span class="microphone-icon"><i class="fas fa-microphone"></i></span>
+        </div>
+        <textarea type="text" class="message-input" placeholder="Send feedback about whispers"></textarea>
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden view">
+    <form class="survey-form">
+
+      <label for="one">Tell me a little about yourself</label>
+      <br>
+      <textarea type="text" class="survey-input" name="one"></textarea>
+      <br><br>
+
+      <label for="two">What are your favorite activities or hobbies? Why do you enjoy them?</label>
+      <br>
+      <textarea type="text" class="survey-input" name="two"></textarea>
+      <br><br>
+
+      <label for="three">How do you handle criticism or feedback from others? Are you open to constructive criticism, or does it affect you emotionally?</label>
+      <br>
+      <textarea type="text" class="survey-input" name="three"></textarea>
+      <br><br>
+
+      <label for="four">What are your long-term goals or aspirations? What drives and motivates you?</label>
+      <br>
+      <textarea type="text" class="survey-input" name="four"></textarea>
+      <br><br>
+
+      <label for="five">How do you handle stress or difficult situations? (e.g., staying calm and composed, seeking support from others, taking time for self-reflection)</label>
+      <br>
+      <textarea type="text" class="survey-input" name="five"></textarea>
+      <br><br>
+
+      <button>Save Answers</button>
+    </form>
+  </div>
+
+  <div class="hidden view">
+    <form class="settings-form">
+      <label for="name">Name:</label>
+      <br>
+      <input type="text" class="name" name="name">
+      <br><br>
+
+      <label for="name">Username:</label>
+      <br>
+      <input type="text" class="username" name="username">
+      <br><br>
+
+      <label for="name">Email:</label>
+      <br>
+      <input type="text" class="email" name="email">
+      <br><br>
+
+      <label for="name">Phone Number:</label>
+      <br>
+      <input type="text" class="phone" name="phone">
+      <br><br>
+
+      <label for="nicknames">Nicknames:</label>
+      <br>
+      <textarea class="nicknames" name="nicknames" placeholder="Enter any nicknames you go by"></textarea>
+      <br><br>
+
+      <label for="whisper-frequency">Whisper Frequency:</label>
+      <br>
+      <input type="range" class="whisper-frequency" name="whisper-frequency" min="1" max="10" step="1">
+      <br><br>
+
+      <label for="whisper-filter">Whisper Filter:</label>
+      <br>
+      <textarea class="whisper-filter" name="whisper-filter" placeholder="Enter words and phrases that you do not want the app to touch on"></textarea>
+      <br><br>
+
+      <button type="submit">Save Settings</button>
+    </form>
+  </div>
+
+  <div class="hidden view">
+    <div class="device-list"></div>
+  </div>
+
+  <div id="drawer">
+    <ul id="drawer-menu">
+      <li class="menu-option">New Chat</li>
+      <li class="menu-option">Diary</li>
+      <li class="menu-option">Whispers</li>
+      <li class="menu-option">Survey</li>
+      <li class="menu-option">Settings</li>
+      <li class="menu-option">Devices</li>
+      <li class="menu-option">Log Out</li>
+    </ul>
+  </div>
+
+  <div class="modal" id="newChatModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>New Chat</h2>
+      <input type="text" id="chatTitleInput" placeholder="Enter chat title">
+      <button id="createChatBtn">Create Chat</button>
+    </div>
+  </div>
+  
+</div>
+<script src="view.js"></script>
+<script src="whisper.js"></script>
+</body>
+</html>
